@@ -22,4 +22,43 @@ def arithematic_formater(problem_list,show_result=False):
     dash_row=[]
     result_row=[]
     formated_row=[]
-    pass
+    
+    for problem in problem_list:
+
+        if "+" in problem:
+            num1,num2=problem.split("+")
+            operator='+'
+        elif '-' in problem:
+            num1,num2=problem.split("-")
+            operator="-"
+        elif "*" in problem:
+            num1,num2=problem.split("*")
+            operator="*"
+        elif "/" in problem:
+            num1,num2=problem.split("/")
+            operator="/"
+        else:
+            print("Operator is not Valid")
+
+        #push num1 in first row
+        width=max(len(num1),len(num2))+2
+        top_row.append(num1.rjust(width))
+        bottom_row.append(operator+num2.rjust(width-1))
+        dash_row.append("-"*width)
+
+        #Calculating result
+        
+
+    #Formating Part
+    formated_row=["    ".join(top_row),"    ".join(bottom_row),"    ".join(dash_row)]
+
+    return "\n".join(formated_row)
+
+
+
+def main():
+    problem_list=get_problem()
+    arithematic_formater(problem_list)
+
+
+main()
