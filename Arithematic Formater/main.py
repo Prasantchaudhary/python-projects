@@ -47,10 +47,27 @@ def arithematic_formater(problem_list,show_result=False):
         dash_row.append("-"*width)
 
         #Calculating result
+        if show_result:
+            if operator=='+':
+                result=str(int(num1)+int(num2))
+            elif operator=='-':
+                result=str(int(num1)-int(num2))
+            elif operator=='*':
+                result=str(int(num1)*int(num2))
+            elif operator=='/':
+                result=str(float(num1)/float(num2))
+            else:
+                print("Error:Invalid Operator")
+            
+            result_row.append(result.rjust(width))
+        
+
         
 
     #Formating Part
     formated_row=["    ".join(top_row),"    ".join(bottom_row),"    ".join(dash_row)]
+    if show_result:
+        formated_row.append("    ".join(result_row))
 
     return "\n".join(formated_row)
 
@@ -58,7 +75,10 @@ def arithematic_formater(problem_list,show_result=False):
 
 def main():
     problem_list=get_problem()
-    arithematic_formater(problem_list)
+    print("Formated Output!")
+    print("----------------")
+    print(arithematic_formater(problem_list,True))
 
 
-main()
+if __name__=="__main__":
+    main()
